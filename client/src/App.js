@@ -1,33 +1,39 @@
-import React, { Lazy, suspense } from 'react';
+import React, { Fragment, Lazy, suspense } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // styles
-import './App.css';
-import './scss/App.scss';
+import "./App.css";
+import "./scss/App.scss";
+import ContactState from "./context/contact/ContactState";
+// components
+import Navbar from "./components/Navbar";
+// containers
+import Aboutpage from "./containers/Aboutpage";
+import Homepage from "./containers/Homepage";
 
 // redux
-import { store, 
-  // persistor 
-} from './store';
-import { Provider } from 'react-redux';
+import {
+  store,
+  // persistor
+} from "./store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <ContactState>
+        <Router>
+          <Fragment className="App">
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route exact path="/about" component={Aboutpage} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+      </ContactState>
     </Provider>
   );
 }
