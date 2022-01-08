@@ -41,7 +41,7 @@ if (process.env.NODE_ENV !== "production") {
 // bodyparser middleware, handles http requests
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// init middleware
+// init middleware and accept data
 app.use(express.json({ extended: false }));
 
 // shows logs of user activity in terminal.
