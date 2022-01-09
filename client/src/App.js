@@ -23,7 +23,7 @@ function App() {
     <Provider store={store}>
       <ContactState>
         <Router>
-          <Fragment className="App">
+          <Fragment>
             <Navbar />
             <div className="container">
               <Switch>
